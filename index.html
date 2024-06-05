@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Cart Project</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas/4.2.5/tocas.min.css" />
+      <link rel="stylesheet" href="./style.css">
+      </head>
+
+<body>
+      <div id="app">
+            <div class="title">真厲害手機商店</div>
+            <div class="book" @wheel.prevent="wheel($event)">
+                  <div class="cards">
+                        <div class="card" v-for="(book,bid) in smartphone" v-if="((keyword=='' || book.name.indexOf(keyword)!=-1) && book.sellAmount!=0 )">
+                              <div class="left"> 
+                                    <div class="cover" :style="bgcss(book.cover)"></div>
+                              </div>
+                              <div class="right">
+                                    <h2 class="name"> {{book.name}}</h2>
+                                    <h4> {{book.type}}</h4>
+                                    <p class="description" v-html="book.description"></p>
+                                    <div class="price">$ {{book.price}}</div>
+                                    <input type="number" min="0" :max="book.sellAmount" value="0" id="amount">
+                                    <button class="add" @click="addCart(book,$event)">+ Add to Cart</button>
+                              </div>
+                        </div>
+                        <div class="warning" v-for="(book,bid) in smartphone" v-if="(keyword!='' && book.name.indexOf(keyword)==-1)">
+                              <div class=" ts-content is-vertically-padded is-center-aligned" style="border: solid 1px;">
+                                    <span class="ts-icon is-heading is-file-icon"></span>
+                                <div class="ts-content">
+                                    <div class="ts-wrap is-middle-aligned">
+                                        <div class="ts-text is-small">此商品不符條件!</div>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <div class="buybox" :style="bgcss(currentBook.cover)" v-if="currentBook"></div>
+            <input v-model="keyword" type="text" placeholder="請輸入品名關鍵字" style="left: 50%;position: fixed;">
+            <button onclick="if($('#controlPanel').hasClass('is-visible')){$('#controlPanel').removeClass('is-visible')}else{$('#controlPanel').addClass('is-visible')}" style="left:90%;position: fixed; border: solid 1px;">後台</button>
+            <div class="fixed-control" @click="isCartOpen=!isCartOpen">
+                  <i class="fa fa-shopping-cart"></i>
+                  <span>{{totalAmount}}</span>
+            </div>
+            <div class="control" v-if="isCartOpen">
+                  <div class="panel">
+                        <h2>購物車清單</h2>
+                        <ul>
+                              <li v-for="(book,bid) in cart">
+                                <div class="thumbnail" :style="bgcss(book.cover)"></div>
+                                <h3>{{book.name}}<div class="price">${{book.price}}<input type="number" :max="book.sellAmount" v-model:value="book.amount"><button class="del" @click="delCart(book,$event)">刪除此品項</button></div></h3>
+                              </li>
+                              <li v-if="!cart.length">
+                                    <h3>Empty Cart</h3>
+                              </li>
+                        </ul>
+                        <hr>
+                        <button @click="clearCart($event)" style="border: solid 1px;">清除購物車</button>
+                        <h2>${{totalPrice}}</h2>
+                        <button onclick="if($('#checkout1').hasClass('is-visible')){$('#checkout1').removeClass('is-visible')}else{$('#checkout1').addClass('is-visible')}" style="border: solid 1px;">結帳</button>
+                  </div>
+            </div>
+            <div class="ts-app-drawer" id="controlPanel" style="top:90%;left: 15%;position: fixed;" >
+                  <span v-for="book in smartphone">
+                    <span>{{ book.name }}</span><br>
+                    價格:<input v-model.number="book.price"/><br>
+                    數量:<input v-model.number="book.sellAmount"/>
+                  </span>
+                </div>
+            <div class="ts-app-drawer" id="checkout1" style="background-color:black; height: 100%;">
+                  
+                  <div class="has-full-size has-flex-center">
+                        姓名: <input type="text" id="name" v-model:value="name"><br>
+                        住址: <input type="text" id="address" v-model:value="address"><br>
+                        電話: <input type="text" id="phone" v-model:value="phone"><br>
+                        <button style="border: solid 1px;" id="submit" onclick="$('#checkout1').removeClass('is-visible'); $('#checkout2').addClass('is-visible')">送出</button>
+                  </div>
+                  
+            </div>
+            <div class="ts-app-drawer" id="checkout2" style="background-color:black; height: 100%;">
+                  <div class="has-full-size has-flex-center">
+                        <ul>
+                              <li v-for="(book,bid) in cart">
+                                <div class="thumbnail" :style="bgcss(book.cover)"></div>
+                                <h3>{{book.name}}<div class="price">${{book.price}}x{{book.amount}}</div></h3>
+                              </li>
+                        </ul>
+                        <span>總額:{{totalPrice}}</span><br>
+                        姓名: {{name}}<br>
+                        住址: {{address}}<br>
+                        電話: {{phone}}<br>
+                        <button style="border: solid 1px;" onclick="$('#checkout2').removeClass('is-visible')">返回</button>
+                  </div>
+            </div>
+      </div>
+      <!-- Script-->
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js'></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js'></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tocas/4.2.5/tocas.min.js"></script>
+      <script src="./script.js"></script>
+</body>
+
+</html>

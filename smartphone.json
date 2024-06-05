@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Xperia 1 VI",
+    "type": "品牌:Sony",
+    "cover": "https://store.sony.com.tw/xperia/upload/product/155/20240507204843_193.png",
+    "description": "處理器:Snapdragon 8 Gen 3<br>記憶體:12GB<br>儲存空間:256GB<br>螢幕尺寸:6.5\"<br>電池容量:5000mAh<br>主鏡頭畫素:4800萬畫素",
+    "price": 39900,
+    "amount":0,
+    "sellAmount":10,
+    "open": false
+  },
+    {
+      "name": "Xperia 1 V",
+      "type": "品牌:Sony",
+      "cover": "https://store.sony.com.tw/xperia/upload/product/154/20230509140919_757.png",
+      "description": "處理器:Snapdragon 8 Gen 2<br>記憶體:12GB<br>儲存空間:256GB<br>螢幕尺寸:6.5\"<br>電池容量:5000mAh<br>主鏡頭畫素:1200萬畫素",
+      "price": 38900,
+      "amount":0,
+      "sellAmount":10,
+      "open": false
+    },
+    {
+      "name": "Xperia 5 V",
+      "type": "品牌:Sony",
+      "cover": "https://store.sony.com.tw/xperia/upload/product/153/20230817172519_59.png",
+      "description": "處理器:Snapdragon 8 Gen 2<br>記憶體:8GB<br>儲存空間:256GB<br>螢幕尺寸:6.1\"<br>電池容量:5000mAh<br>主鏡頭畫素:1200萬畫素",
+      "price": 32900,
+      "amount":0,
+      "sellAmount":10,
+      "open": false
+    },
+    {
+      "name": "Xperia 1 IV",
+      "type": "品牌:Sony",
+      "cover": "https://store.sony.com.tw/xperia/upload/product/148/20220505161059_117.png",
+      "description": "處理器:Snapdragon 8 Gen 1<br>記憶體:12GB<br>儲存空間:256GB<br>螢幕尺寸:6.5\"<br>電池容量:5000mAh<br>主鏡頭畫素:1200萬畫素",
+      "price": 36900,
+      "amount":0,
+      "sellAmount":10,
+      "open": false
+    },
+    {
+      "name": "Xperia 5 IV",
+      "type": "品牌:Sony",
+      "cover": "https://store.sony.com.tw/xperia/upload/product/150/20220830225401_512.png",
+      "description": "處理器:Snapdragon 8 Gen 1<br>記憶體:8GB<br>儲存空間:256GB<br>螢幕尺寸:6.1\"<br>電池容量:5000mAh<br>主鏡頭畫素:1200萬畫素",
+      "price": 29900,
+      "amount":0,
+      "sellAmount":10,
+      "open": false
+    },
+    {
+      "name": "S24 Ultra",
+      "type": "品牌:Samsung Galaxy",
+      "cover": "https://images.samsung.com/is/image/samsung/p6pim/tw/2401/gallery/tw-galaxy-s24-s928-489290-489290-sm-s9280lbgbri-thumb-539507384?imwidth=480",
+      "description": "處理器:Snapdragon 8 Gen 3<br>記憶體:12GB<br>儲存空間:256GB<br>螢幕尺寸:6.8\"<br>電池容量:5000mAh<br>主鏡頭畫素:2億畫素",
+      "price": 43900,
+      "amount":0,
+      "sellAmount":10,
+      "open": false
+    },
+    {
+      "name": "S23 Ultra",
+      "type": "品牌:Samsung Galaxy",
+      "cover": "https://images.samsung.com/is/image/samsung/p6pim/tw/2302/gallery/tw-galaxy-s23-s918-sm-s9180zkgbri-thumb-534880385?imwidth=480",
+      "description": "處理器:Snapdragon 8 Gen 2<br>記憶體:12GB<br>儲存空間:256GB<br>螢幕尺寸:6.8\"<br>電池容量:5000mAh<br>主鏡頭畫素:2億畫素",
+      "price": 40990,
+      "amount":0,
+      "sellAmount":10,
+      "open": false
+    }
+  ]
