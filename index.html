@@ -45,7 +45,7 @@
             <button onclick="if($('#controlPanel').hasClass('is-visible')){$('#controlPanel').removeClass('is-visible')}else{$('#controlPanel').addClass('is-visible')}" style="left:90%;position: fixed; border: solid 1px;">後台</button>
             <div class="fixed-control" @click="isCartOpen=!isCartOpen">
                   <i class="fa fa-shopping-cart"></i>
-                  <span>{{totalAmount}}</span>
+                  <span id="totalAmount">{{totalAmount}}</span>
             </div>
             <div class="control" v-if="isCartOpen">
                   <div class="panel">
@@ -62,7 +62,7 @@
                         <hr>
                         <button @click="clearCart($event)" style="border: solid 1px;">清除購物車</button>
                         <h2>${{totalPrice}}</h2>
-                        <button onclick="if($('#checkout1').hasClass('is-visible')){$('#checkout1').removeClass('is-visible')}else{$('#checkout1').addClass('is-visible')}" style="border: solid 1px;">結帳</button>
+                        <button onclick="if(parseInt($('#totalAmount').val())>=1){if($('#checkout1').hasClass('is-visible')){$('#checkout1').removeClass('is-visible')}else{$('#checkout1').addClass('is-visible')}}else{alert('數量無法低於1，故此數量無效，請重新輸入數量!');}" style="border: solid 1px;">結帳</button>
                   </div>
             </div>
             <div class="ts-app-drawer" id="controlPanel" style="top:90%;left: 15%;position: fixed;" >

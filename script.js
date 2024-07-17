@@ -39,7 +39,7 @@ var vm=new Vue({
             addCart(book,evt){
                   this.currentBook= book;
                   
-                  if(this.cart.indexOf(book)==-1){
+                  if(this.cart.indexOf(book)==-1 && parseInt($("#amount").val())>0){
                         this.currentBook.amount+=parseInt($("#amount").val());
                         let target = evt.target
                         this.$nextTick(()=>{
@@ -54,7 +54,12 @@ var vm=new Vue({
                         })
                   }
                   else{
-                        alert("已加入購物車!欲修改數量請至購物車!")
+                        if(parseInt($("#amount").val())<1){
+                              alert("數量無法低於1，故此數量無效，請重新輸入數量!");
+                        }
+                        else{
+                              alert("已加入購物車!欲修改數量請至購物車!");
+                        }
                   }
             },
             delCart(book,evt){
